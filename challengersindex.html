@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KrushiSetu – AI Smart Soil Card</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f9f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    section {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    select, button {
+      padding: 8px;
+      width: 100%;
+      margin-top: 5px;
+    }
+
+    button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #1b5e20;
+    }
+
+    footer {
+      background-color: #e0e0e0;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>KrushiSetu</h1>
+  <p>AI-Powered Smart Soil Card for Sustainable Agriculture</p>
+</header>
+
+<section>
+  <h2>About the Platform</h2>
+  <p>
+    KrushiSetu uses AI-driven soil analysis to help farmers choose the right crops,
+    improve soil health, and connect with agricultural support systems.
+    Designed to be simple, accessible, and impactful.
+  </p>
+</section>
+
+<section class="card">
+  <h2>Soil Analysis Input</h2>
+
+  <label>Soil Type</label>
+  <select id="soilType">
+    <option value="Loamy">Loamy</option>
+    <option value="Clay">Clay</option>
+    <option value="Sandy">Sandy</option>
+  </select>
+
+  <label>Nitrogen Level</label>
+  <select id="nitrogen">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+
+  <label>Phosphorus Level</label>
+  <select id="phosphorus">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+
+  <label>Potassium Level</label>
+  <select id="potassium">
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+
+  <button onclick="generateReport()">Generate Smart Soil Card</button>
+</section>
+
+<section class="card" id="report" style="display:none;">
+  <h2>Smart Soil Card Report</h2>
+  <p id="reportContent"></p>
+</section>
+
+<section>
+  <h2>Business Model</h2>
+  <ul>
+    <li>Free soil analysis for farmers</li>
+    <li>Government subscription for regional soil intelligence</li>
+    <li>Optional premium advisory services</li>
+    <li>Ethical partnerships with agri-input companies</li>
+  </ul>
+</section>
+
+<footer>
+  <p>AI for Good | Empowering Farmers with Technology</p>
+</footer>
+
+<script>
+  function generateReport() {
+    let soil = document.getElementById("soilType").value;
+    let n = document.getElementById("nitrogen").value;
+    let p = document.getElementById("phosphorus").value;
+    let k = document.getElementById("potassium").value;
+
+    let crop = "Wheat";
+    let season = "Rabi";
+    let improvement = "Use organic compost";
+
+    if (soil === "Sandy") {
+      crop = "Groundnut";
+      season = "Kharif";
+      improvement = "Increase organic matter and irrigation";
+    }
+
+    if (n === "Low") {
+      improvement += ", add nitrogen-rich manure";
+    }
+
+    let reportText = `
+      <strong>Soil Type:</strong> ${soil}<br>
+      <strong>Nitrogen:</strong> ${n}<br>
+      <strong>Phosphorus:</strong> ${p}<br>
+      <strong>Potassium:</strong> ${k}<br><br>
+      <strong>Recommended Crop:</strong> ${crop}<br>
+      <strong>Best Season:</strong> ${season}<br>
+      <strong>Suggested Improvements:</strong> ${improvement}
+    `;
+
+    document.getElementById("reportContent").innerHTML = reportText;
+    document.getElementById("report").style.display = "block";
+  }
+</script>
+
+</body>
+</html>
